@@ -1,0 +1,176 @@
+%!TEX root = latex.tex
+
+\begin{frame}{Modulare Dokumente}
+  \tikzset{
+    every node/.style={
+      inner sep=1pt,
+      on grid,
+      label position=below,
+      auto
+    },
+    shorten >=1em,
+    shorten <=1em,
+    node distance=7em and 5em
+  }
+  \begin{center}
+    \begin{tikzpicture}
+      \node[inner sep=10pt] (large) {\tikz\node[examplecolor,label=\texttt{\ \ main}] {\only<presentation:1| article:0>{\icon[2]{TEX}}\only<presentation:2| article:0>{\icon[10]{TEX}}\only<presentation:3| article:0>{\icon[20]{TEX}}\only<4->{\icon[30]{TEX}}};};
+      \onslide<5->
+      \path[alertedcolor, line width=3pt, line cap=round, shorten >=0pt,shorten <=0pt]
+        (large.north east) edge (large.south west)
+        (large.north west) edge (large.south east);
+    \end{tikzpicture}
+    \qquad
+    \only<6->{%
+      \begin{tikzpicture}
+        \node[examplecolor,label=below:\texttt{\ \ main}] (main) {\icon[1]{TEX}};
+
+        \uncover<7->{%
+          \node[maincolor,label=\texttt{\ \ styles}, above left=of main] (config) {\icon[2]{TEX}};
+          \path[very thick]
+            (config.east) edge[->] node[pos=.6, swap]
+              {\texttt{\color{texcs}\bfseries\textbackslash input}} (main);
+        }
+
+        \uncover<8->{%
+          \node[maincolor,label=\texttt{\ \ intro}, above right=of main] (chap1) {\icon[3]{TEX}};
+          \path[very thick]
+            (chap1.west) edge[->] node[pos=.6]
+              {\texttt{\color{texcs}\bfseries\textbackslash include}} (main);
+        }
+
+        \uncover<9->{%
+          \node[maincolor,label=\texttt{\ \ methods}, below right=of main] (chap2) {\icon[5]{TEX}};
+          \path[very thick]
+            (chap2.west) edge[->,shorten >=1.6em] node[pos=.5, swap]
+              {\texttt{\color{texcs}\bfseries\textbackslash include}} (main);
+        }
+
+        \uncover<10->{%
+          \node[maincolor,label=\texttt{\ \ summary}, below left=of main] (chap3) {\icon[4]{TEX}};
+          \path[very thick]
+            (chap3.east) edge[->,shorten >=1.6em] node[pos=.5]
+              {\texttt{\color{texcs}\bfseries\textbackslash include}} (main);
+        }
+      \end{tikzpicture}
+    }
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Modulare Struktur}
+  \begin{columns}
+    \column{.4\textwidth}
+    \begin{tikzpicture}[
+        node distance=0,
+        grow via three points={one child at (0,-0.7) and two children at (0,-0.7) and (0,-1.4)},
+        edge from parent path={([xshift=6pt]\tikzparentnode.south west) |- (\tikzchildnode.west)},
+        every node/.style={thick,anchor=west,xshift=-3mm,font=\ttfamily,text width=4em},
+        every child/.style={thick,draw=black},
+        dir/.style={draw=maincolor,fill=maincolor!10},
+        optional/.style={dashed}
+      ]
+      \node [dir] {thesis}
+        child { node [dir] {inc}
+          child { node {title}}
+          child { node {styles}}
+        }
+        child [missing] {}
+        child [missing] {}
+        child { node [dir] {content}
+          child { node {intro}}
+          child { node (methods) {methods}}
+          child { node (summary) {summary}}
+        }
+        child [missing] {}
+        child [missing] {}
+        child [missing] {}
+        child { node {main}};
+        \only<2>\path[alertedcolor, line width=1pt, line cap=rounded]
+          (methods.south west) edge (methods.north east);
+        \only<2>\path[alertedcolor, line width=1pt, line cap=rounded]
+          (summary.south west) edge (summary.north east);
+      \end{tikzpicture}
+    \column{0.6\textwidth}
+    \begin{lstlisting}[gobble=6,escapechar=-]
+      \documentclass{scrbook}
+      \input{inc/styles}
+      -\alt<2>{\textcolor{texcs}{\bfseries\textbackslash includeonly}\textcolor{red}{\bfseries\{}content/intro\textcolor{red}{\bfseries\}}}{\textcolor{comment}{\itshape\% \textbackslash includeonly}}-
+      \begin{document}
+        \frontmatter
+        \input{inc/title}
+        \tableofcontents
+
+        \mainmatter
+        \include{content/intro}
+        \include{content/methods}
+        \include{content/summary}
+      \end{document}
+    \end{lstlisting}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Befehle für modulare Struktur}
+  \begin{tabular}{rL{6cm}}
+    \lstinline-\input- & Inhalt der Datei einfügen. \\[1ex]
+    \lstinline-\include- & Inhalt der Datei einfügen und \newline
+      Seitenumbrüche davor und dahinter.\\[1ex]
+    \lstinline-\includeonly- & Liste der von \lstinline-\include- \newline
+      berücksichtigten Dateien.\\
+  \end{tabular}
+\end{frame}
+
+\begin{frame}[fragile]{Abschnitte langer Dokumente (\lstinline-scrbook-)}
+  \begin{lstlisting}[gobble=4]
+    \begin{document}
+      \frontmatter % Vorspann
+      \begin{titlepage} ... \end{titlepage}
+      \tableofcontents
+
+      \mainmatter % Hauptteil
+      \chapter{Einleitung}
+
+      \appendix % Anhang
+      \chapter{Glossar}
+      
+      \backmatter % Nachspann
+      \listoffigures
+    \end{document}
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Gestaltung der Abschnitte}
+  \begin{tabbing}
+    \hskip8cm \= \kill
+
+    \textcolor{texcs}{\ttfamily\bfseries\textbackslash frontmatter} Vorspann
+        \> \textcolor{examplecolor}{\bfseries\sffamily Vorwort}\\
+      \strut\ \textcolor{maincolor}{--} keine Kapitelnummern\\
+      \strut\ \textcolor{maincolor}{--} römische Seitennummern
+        \> \textcolor{examplecolor}{\rmfamily \qquad -- iv --} \\[3ex]
+
+    \pause
+
+    \textcolor{texcs}{\ttfamily\bfseries\textbackslash mainmatter} Hauptteil
+        \> \textcolor{examplecolor}{\bfseries\sffamily 3. Konzept}\\
+      \strut\ \textcolor{maincolor}{--} arabische Kapitelnummern\\
+      \strut\ \textcolor{maincolor}{--} \alert{neue} arabische Seitennummern
+        \> \textcolor{examplecolor}{\rmfamily \qquad -- 5 --} \\[3ex]
+
+    \pause
+
+    \textcolor{texcs}{\ttfamily\bfseries\textbackslash appendix} Anhang
+        \> \textcolor{examplecolor}{\bfseries\sffamily A. Anhang}\\
+      \strut\ \textcolor{maincolor}{--} \alert{neue} alphabetische Kapitelnummern\\
+      \strut\ \textcolor{maincolor}{--} arabische Seitennummern
+        \> \textcolor{examplecolor}{\rmfamily \qquad -- 126 --} \\[3ex]
+
+    \pause
+
+    \textcolor{texcs}{\ttfamily\bfseries\textbackslash backmatter} Nachspann
+        \> \textcolor{examplecolor}{\bfseries\sffamily Literatur}\\
+      \strut\ \textcolor{maincolor}{--} keine Kapitelnummern\\
+      \strut\ \textcolor{maincolor}{--} arabische Seitennummern
+        \> \textcolor{examplecolor}{\rmfamily \qquad -- 135 --}
+  \end{tabbing}
+\end{frame}
+

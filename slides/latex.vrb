@@ -1,7 +1,5 @@
-%!TEX root = latex.tex
-
-\begin{frame}[fragile]{Zusammenfassung}
-  \begin{enumerate}
+\frametitle{Zusammenfassung}
+\begin{enumerate}
     \item Das \alert{\LaTeX-Dokument} enthält \alert{Inhalt und Struktur}.
     \item \LaTeX\ setzt ein druckfertiges \alert{PDF-Dokument} und kümmert sich dabei um die \alert{gute Form}.
     \item Es ist schwierig, \alert{neue Layouts} zu erzeugen.
@@ -14,27 +12,3 @@
       ein \alert{Literaturverzeichnis}. Die \alert{Zitierweise} kann dabei mit
       \lstinline-\bibliographystyle- eingestellt werden.
   \end{enumerate}
-\end{frame}
-
-\begin{frame}{Das \LaTeX-Standardwerk}
-  \begin{center}
-    \includegraphics[width=5cm]{buecher/kopka}
-  \end{center}
-\end{frame}
-
-\begin{frame}{Moderne \LaTeX-Einführung}
-  \begin{center}
-    \includegraphics[width=5cm]{buecher/schlosser}
-  \end{center}
-\end{frame}
-
-\begin{frame}{Online \LaTeX-Referenz}
-  \begin{center}
-    \includegraphics[width=5cm]{buecher/wikibook}
-
-    \xxx
-
-    \Huge Wikibook
-  \end{center}
-\end{frame}
-

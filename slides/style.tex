@@ -1,4 +1,4 @@
-%!TEX root = basic.tex
+%!TEX root = latex.tex
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -36,7 +36,8 @@
   calc,%
   fadings,%
   lindenmayersystems,%
-  decorations.markings%
+  decorations.markings,%
+  shadows.blur%
 }
 
 \usepackage{pifont}
@@ -161,6 +162,9 @@
            {<}{{\textbf{\color{red}<}}}1
            {>}{{\textbf{\color{red}>}}}1
 }
+
+% logos like \BibTeX
+\usepackage{logos}
 
 \usepackage{array}
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}

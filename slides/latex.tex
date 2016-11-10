@@ -1,29 +1,42 @@
 \documentclass[xcolor=table]{beamer}
 \input{style}
+\input{macros}
 
 \author{Malte Schmitz}
 \title{LaTeX}
-\institute{Institut für Softwaretechnik und Programmiersprachen}
-\date{Winter 2015}
+\date{MetaNook 2016}
 
 \begin{document}
 
 \input{titleframe}
 \input{ziele}
+
 \section{Was ist \LaTeX?}
 \input{einordnung}
+
 \section{\LaTeX{} verwenden}
-\subsection{Auszeichnungen}
+\subsection{Auszeichnungen, Befehle und Umgebungen}
 \livecoding{\LaTeX{} verwenden}
 \input{befehle}
-\subsection{Abschnitte}
-\subsection{Mathematik}
-\subsection{Listen}
-\subsection{Tabellen und Abbildungen}
+\subsection{Abschnitte, Mathe, Listen, Tabellen und Abbildungen}
 \livecoding{Elemente in \LaTeX}
+
 \section{Aufbau und Präambel}
 \input{preamble}
 \livecoding{Die wahre Präambel}
+
+\section{Abschlussarbeiten}
+\input{abschlussarbeiten}
+\subsection{Modulare Dokumente und Abschnitte}
+\input{modular}
+\livecoding{Modulare Dokumente und Abschnitte}
+
+\subsection{Theoreme}
+\livecoding{Theoreme}
+
+\subsection{Literaturverzeichnisse mit \texorpdfstring{\BibTeX}{BibTeX}}
+\input{bibtex}
+
 \input{summary}
 
 \end{document}
