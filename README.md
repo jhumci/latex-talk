@@ -1,6 +1,5 @@
-# LaTeX-Einführung
+# English LaTeX Introduction
 
-Das Skript, die Präsentationen und viele weitere Links zum Thema finden sich
-auf [mlte.de/latex](http://www.mlte.de/latex).
+based on [mlte.de/latex](http://www.mlte.de/latex).
 
-In diesem Repository befindet sich der Quelltext der Folien und der Beispielcode.
+This repository containts the slides, a scriptum  and an example. 
