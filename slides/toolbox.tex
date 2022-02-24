@@ -1,0 +1,37 @@
+%!TEX root = latex.tex
+
+\subsection{Toolbox}
+
+	
+\begin{frame}[fragile]{What You need to start}
+	\begin{itemize}
+		\item<1-> \alert{Distribution} that compiles the text
+		\item<2-> user friendly \alert{Editor} to edit the \LaTeX-Document
+		\item<3-> \alert{Literature tool} if You want to manage many citations
+	\end{itemize}
+	
+	\xxx
+	
+	\begin{center}
+		\begin{tikzpicture}[
+			shorten <=5pt,
+			shorten >=5pt
+			]
+			\matrix[column sep=3em] 
+				{
+					\visible<1->{\node[] {
+							\includegraphics[width=6em]{demo/MikTex.png}
+						};} &
+						\visible<2->{\node[] {
+							\includegraphics[width=6em]{demo/1024px-TeXstudio_Logo.svg.png}
+						};} &
+						 	\visible<3->{\node[] {
+						 		\includegraphics[width=6em]{demo/JabRef-icon-256.png}
+					 		};} \\
+					\visible<1->{\node {\shortstack{e.g., TexLive\\MikTex}};}  &\visible<2->{\node {\shortstack{e.g., TexStudio\\Texmaker}};}  &  \visible<3->{\node {\shortstack{e.g., JabRef\\Citavi}};} \\
+				};
+
+		\end{tikzpicture}
+	\end{center}
+
+\end{frame}

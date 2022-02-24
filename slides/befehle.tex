@@ -1,6 +1,6 @@
 %!TEX root = latex.tex
 
-\begin{frame}[fragile]{Befehle und Umgebungen}
+\begin{frame}[fragile]{Commands and Evironments}
   \LARGE
 
   \lstset{
@@ -21,14 +21,20 @@
   }
 
   \begin{lstlisting}
-    \%Name%[%Optional%]{%Argument%}%\ldots%
+    \%Command-Name%
   \end{lstlisting}
 
   \vfill
 
   \begin{lstlisting}
-    \begin{%Name%}[%Optional%]{%Argument%}%\ldots%
-      %Inhalt%
-    \end{%Name%}
+    \%Command-Name%[%Optional%]{%Argument%}%\ldots%
+  \end{lstlisting}
+
+  \vfill
+
+  \begin{lstlisting}
+    \begin{%Environment-Name%}[%Optional%]{%Argument%}%\ldots%
+      %Content%
+    \end{%Environment-Name%}
   \end{lstlisting}
 \end{frame}

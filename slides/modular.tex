@@ -1,6 +1,6 @@
 %!TEX root = latex.tex
 
-\begin{frame}{Modulare Dokumente}
+\begin{frame}{Modular Documents}
   \tikzset{
     every node/.style={
       inner sep=1pt,
@@ -57,7 +57,7 @@
   \end{center}
 \end{frame}
 
-\begin{frame}[fragile]{Modulare Struktur}
+\begin{frame}[fragile]{Modular Structure}
   \begin{columns}
     \column{.4\textwidth}
     \begin{tikzpicture}[
@@ -109,67 +109,67 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Befehle für modulare Struktur}
+\begin{frame}[fragile]{Commands for a modular Structure}
   \begin{tabular}{rL{6cm}}
-    \lstinline-\input- & Inhalt der Datei einfügen. \\[1ex]
-    \lstinline-\include- & Inhalt der Datei einfügen und \newline
-      Seitenumbrüche davor und dahinter.\\[1ex]
-    \lstinline-\includeonly- & Liste der von \lstinline-\include- \newline
-      berücksichtigten Dateien.\\
+    \lstinline-\input- & add content of the file. \\[1ex]
+    \lstinline-\include- & add content of the file and \newline
+      add pagebreaks before and behind.\\[1ex]
+    \lstinline-\includeonly- & list of files regarded \newline by \lstinline-\include- 
+      .\\
   \end{tabular}
 \end{frame}
 
-\begin{frame}[fragile]{Abschnitte langer Dokumente (\lstinline-scrbook-)}
+\begin{frame}[fragile]{Segments of long Documents (\lstinline-scrbook-)}
   \begin{lstlisting}[gobble=4]
     \begin{document}
-      \frontmatter % Vorspann
+      \frontmatter % Titlepage, Table of Content, etc.
       \begin{titlepage} ... \end{titlepage}
       \tableofcontents
-
-      \mainmatter % Hauptteil
+	  	% Has Roman page numbering (i, ii, ...)
+      \mainmatter % Main content
       \chapter{Einleitung}
-
-      \appendix % Anhang
+		% Has Arabic page numbering (1, 2, ...)
+      \appendix % Appendix, Bibliography
       \chapter{Glossar}
       
-      \backmatter % Nachspann
+      \backmatter % Ending
       \listoffigures
     \end{document}
   \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Gestaltung der Abschnitte}
+\begin{frame}[fragile]{Layout of the Segments}
   \begin{tabbing}
     \hskip8cm \= \kill
 
-    \textcolor{texcs}{\ttfamily\bfseries\textbackslash frontmatter} Vorspann
-        \> \textcolor{examplecolor}{\bfseries\sffamily Vorwort}\\
-      \strut\ \textcolor{maincolor}{--} keine Kapitelnummern\\
-      \strut\ \textcolor{maincolor}{--} römische Seitennummern
+    \textcolor{texcs}{\ttfamily\bfseries\textbackslash frontmatter} Prefix
+        \> \textcolor{examplecolor}{\bfseries\sffamily Abstract}\\
+      \strut\ \textcolor{maincolor}{--} chapters not numbered \\
+      \strut\ \textcolor{maincolor}{--} Roman page numbers
         \> \textcolor{examplecolor}{\rmfamily \qquad -- iv --} \\[3ex]
 
     \pause
 
-    \textcolor{texcs}{\ttfamily\bfseries\textbackslash mainmatter} Hauptteil
+    \textcolor{texcs}{\ttfamily\bfseries\textbackslash mainmatter} Main Content
         \> \textcolor{examplecolor}{\bfseries\sffamily 3. Konzept}\\
-      \strut\ \textcolor{maincolor}{--} arabische Kapitelnummern\\
-      \strut\ \textcolor{maincolor}{--} \alert{neue} arabische Seitennummern
+      \strut\ \textcolor{maincolor}{--} chapters numbered in Arabic\\
+      \strut\ \textcolor{maincolor}{--} \alert{new} Arabic page numbers
         \> \textcolor{examplecolor}{\rmfamily \qquad -- 5 --} \\[3ex]
 
     \pause
 
-    \textcolor{texcs}{\ttfamily\bfseries\textbackslash appendix} Anhang
+    \textcolor{texcs}{\ttfamily\bfseries\textbackslash appendix} Appendix
         \> \textcolor{examplecolor}{\bfseries\sffamily A. Anhang}\\
-      \strut\ \textcolor{maincolor}{--} \alert{neue} alphabetische Kapitelnummern\\
-      \strut\ \textcolor{maincolor}{--} arabische Seitennummern
+      \strut\ \textcolor{maincolor}{--} \alert{new} alphabetic chapter numbers\\
+      \strut\ \textcolor{maincolor}{--} Arabic page numbers
         \> \textcolor{examplecolor}{\rmfamily \qquad -- 126 --} \\[3ex]
 
     \pause
 
-    \textcolor{texcs}{\ttfamily\bfseries\textbackslash backmatter} Nachspann
+    \textcolor{texcs}{\ttfamily\bfseries\textbackslash backmatter} Postamble
         \> \textcolor{examplecolor}{\bfseries\sffamily Literatur}\\
-      \strut\ \textcolor{maincolor}{--} keine Kapitelnummern\\
-      \strut\ \textcolor{maincolor}{--} arabische Seitennummern
+      \strut\ \textcolor{maincolor}{--} chapters not numbered \\
+      \strut\ \textcolor{maincolor}{--} Arabic page numbers
         \> \textcolor{examplecolor}{\rmfamily \qquad -- 135 --}
   \end{tabbing}
 \end{frame}

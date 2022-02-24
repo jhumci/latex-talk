@@ -1,6 +1,6 @@
 %!TEX root = advanced.tex
 
-\begin{frame}{Literaturverzeichnisse mit \texorpdfstring{\BibTeX}{BibTeX}}
+\begin{frame}{Bibliographies with \texorpdfstring{\BibTeX}{BibTeX}}
   \centerline{\includegraphics[width=9cm]{demo/arbeit.pdf}}
 \end{frame}
 
@@ -8,24 +8,27 @@
   \begin{lstlisting}[gobble=4]
     \documentclass{scrartcl}
     %...
+\usepackage [super , square , sort&compress ]{natbib}
 
-    \begin{document}
-      In \cite{Knuth} wird das Satzsystem \TeX{}
-      vom Autor des Systems vorgestellt. Jedes
-      Zeichen hat dabei einen Category Code
-      (vergleiche dazu \cite[S.~28~ff.]{Eijkhout}).
-
-      \bibliographystyle{alphadin}
-      \bibliography{datenbank}
-    \end{document}
+	\begin{document}
+		In \cite{Knuth} wird das Satzsystem 
+		\TeX{} vom Autor des Systems
+		vorgestellt. Jedes Zeichen hat dabei
+		einen Category Code (vergleiche dazu
+		\cite[S.~28~ff.]{Eijkhout}).
+		
+		\bibliographystyle{alphadin}
+		
+		\bibliography{datenbank}
+	\end{document}
   \end{lstlisting}
 \end{frame}
 
-\begin{frame}{Die Literaturdatenbank \texttt{datenbank.bib}}
+\begin{frame}{The literature data base \texttt{datenbank.bib}}
   \lstinputlisting[language=BibTeX,moretexcs={TeX}]{demo/datenbank.bib}
 \end{frame}
 
-\begin{frame}[fragile]{Kompilieren}
+\begin{frame}[fragile]{Compilation}
   \begin{lstlisting}[language={},morekeywords={pdflatex,bibtex},gobble=4]
     pdflatex arbeit
     bibtex arbeit
@@ -47,7 +50,7 @@
   \end{lstlisting}
 \end{frame}
 
-\begin{frame}{Wie funktioniert \BibTeX?}
+\begin{frame}{How does \BibTeX work?}
   \begin{tikzpicture}[
       on grid,
       node distance=9mm and 23mm,
@@ -123,4 +126,4 @@
   \end{tikzpicture}
 \end{frame}
 
-\livecoding{\BibTeX\ in der Praxis}
+
